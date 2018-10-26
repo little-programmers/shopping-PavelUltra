@@ -4,8 +4,13 @@
 #include "result.h"
 
 
-int main() {
-    FILE* shop_file = fopen("data-files/shop", "r");   // для примера введем несуществующий файл
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        printf("Недостаточно аргументов для выполнения\n`Имя программы shop файл cust файл`\n");
+        return -1;
+    }
+    
+    FILE* shop_file = fopen(argv[1], "r");   // для примера введем несуществующий файл
     if (!shop_file) {
         perror("fopen failed");
         return -1;
@@ -14,7 +19,7 @@ int main() {
     shop* shop = fill_shop(shop_file);
     fclose(shop_file);
  
-    FILE* cust_file = fopen("data-files/cust1", "r");
+    FILE* cust_file = fopen(argv[2], "r");
     if (!cust_file) {
         perror("fopen failed");
         return -1;
