@@ -1,0 +1,5 @@
+language: c
+compiler: gcc
+script: make
+notifications:
+  webhooks: https://travis-builds.herokuapp.com
