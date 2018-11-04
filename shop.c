@@ -14,7 +14,9 @@ shop* fill_shop(FILE* f) {
         if (size == i+1) {
             size <<= 1; 
             shop->products = realloc(shop->products, size*sizeof(product));
-            set_defaults(&shop->products[i+1]);
+            for (int j = i+1; j < size; j++) {
+                set_defaults(&shop->products[j]);
+            }
         }
     }
     return shop;
